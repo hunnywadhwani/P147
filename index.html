@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Virtual Room</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <!-- Room -->
+        <a-entity id="room" position="0 0 0">
+            <!-- Floor -->
+            <a-plane color="#222" rotation="-90 0 0" width="10" height="10"></a-plane>
+
+            <!-- Walls -->
+            <a-entity geometry="primitive: box; width: 10; height: 5; depth: 0.1" position="0 2.5 -5" material="src: #wallTexture"></a-entity>
+            <a-entity geometry="primitive: box; width: 10; height: 5; depth: 0.1" position="0 2.5 5" material="src: #wallTexture"></a-entity>
+            <a-entity geometry="primitive: box; width: 0.1; height: 5; depth: 10" position="-5 2.5 0" material="src: #wallTexture"></a-entity>
+            <a-entity geometry="primitive: box; width: 0.1; height: 5; depth: 10" position="5 2.5 0" material="src: #wallTexture"></a-entity>
+
+            <!-- Ceiling -->
+            <a-plane color="#222" rotation="90 0 0" width="10" height="10" position="0 5 0"></a-plane>
+        </a-entity>
+
+        <!-- Image Texture -->
+        <a-plane id="wall-poster-right" src="data:image/png;base64,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"
+            position="0.1 2.2 -3.3" rotation="0 0 0" width="4" height="3"></a-plane>
+        <!-- Camera -->
+        <a-entity camera look-controls position="0 1.6 0"></a-entity>
+    </a-scene>
+</body>
+
+</html>
